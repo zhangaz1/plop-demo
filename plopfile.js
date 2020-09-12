@@ -1,4 +1,8 @@
-module.exports = function(plop) {
+const { NodePlopAPI } = require('plop');
+
+module.exports = function (plop) {
+	plop.setHelper('upperCase', (text) => text.toUpperCase());
+
 	plop.setGenerator('basics', {
 		description: 'this is a skeleton plopfile',
 		prompts: [],
@@ -18,4 +22,6 @@ module.exports = function(plop) {
 			templateFile: 'plop-templates/controller.ts.hbs',
 		}],
 	});
+
+
 };
