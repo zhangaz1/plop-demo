@@ -1,4 +1,5 @@
-const { NodePlopAPI } = require('plop');
+// const { NodePlopAPI } = require('plop');
+const promptDirectory = require('inquirer-directory');
 
 module.exports = function(plop) {
 	plop.setHelper('upperCase', (text) => text.toUpperCase());
@@ -29,6 +30,25 @@ module.exports = function(plop) {
 			type: 'doTheAsyncThing',
 			speed: 'slow',
 		}],
+	});
+
+	plop.setPrompt('directory', promptDirectory);
+
+	plop.setActionType('log', (answer, config, plop) => {
+		console.log(answer, config);
+		return 'logged';
+	})
+
+	plop.setGenerator('testIniquirerDirectory', {
+		prompts: [{
+			type: 'directory',
+			name: 'dir',
+			message: 'imput directory:',
+			basePath: './',
+		}],
+		actions: [{
+			type: 'log',
+		}]
 	});
 
 	plop.setGenerator('basics', {
