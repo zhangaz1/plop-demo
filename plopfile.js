@@ -1,7 +1,9 @@
 const { NodePlopAPI } = require('plop');
 
-module.exports = function (plop) {
+module.exports = function(plop) {
 	plop.setHelper('upperCase', (text) => text.toUpperCase());
+
+	plop.setPartial('partialComment', '// partial comments');
 
 	plop.setGenerator('basics', {
 		description: 'this is a skeleton plopfile',
