@@ -5,6 +5,32 @@ module.exports = function(plop) {
 
 	plop.setPartial('partialComment', '// partial comments');
 
+	plop.setActionType('doTheThing', (answer, config, plop) => {
+		console.log('do the thing...', config);
+		return 'doTheThing: success';
+	});
+
+	plop.setActionType('doTheAsyncThing', (answers, config, plop) => {
+		return new Promise((resolve) => {
+			setTimeout(() => {
+				console.log('doTheAsyncThing...', config);
+				resolve('doTheAsyncTing success!');
+			}, 200);
+		})
+	});
+
+	plop.setGenerator('doAction', {
+		description: 'call set actions',
+		prompts: [],
+		actions: [{
+			type: 'doTheThing',
+			configProp: 'avaliable from the config param',
+		}, {
+			type: 'doTheAsyncThing',
+			speed: 'slow',
+		}],
+	});
+
 	plop.setGenerator('basics', {
 		description: 'this is a skeleton plopfile',
 		prompts: [],
