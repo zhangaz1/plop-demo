@@ -67,7 +67,7 @@ module.exports = function(plop) {
 		actions: [{
 			type: 'add',
 			path: 'src/{{name}}.ts',
-			templateFile: 'plop-templates/controller.ts.hbs',
+			templateFile: 'plop-templates/controller.tpl',
 		}],
 	});
 
